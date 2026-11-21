@@ -3,5 +3,5 @@
 window.ELECTION_CONFIG = {
   SUPABASE_URL: "https://ygvxfrynqkdimpidjnle.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_v7U4XzG5S77g89LqZQvq9A_VQni8oXo",
-  FEATURED_CANDIDATE: "Минато Намикадзе"
+  FEATURED_CANDIDATE: "Юки Учиха (Кандидат от совета)"
 };
