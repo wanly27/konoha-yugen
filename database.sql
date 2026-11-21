@@ -11,7 +11,7 @@ create table if not exists public.election_settings (
 );
 
 insert into public.election_settings (id, featured_candidate, voting_open)
-values (true, 'Минато Намикадзе', true)
+values (true, 'Юки Учиха (Кандидат от совета)', true)
 on conflict (id) do update
 set featured_candidate = excluded.featured_candidate;
 
