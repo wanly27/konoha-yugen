@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Выборы Хокаге | Коноха</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --red: #a83228;
+  --dark: #211713;
+  --cream: #f1dfc2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--cream);
+  background: #201713;
+}
+
+/* ФОН */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(rgba(15,12,12,.42), rgba(15,12,12,.78)),
+    url("assets/hokage-rock.jpg") center center / cover no-repeat;
+}
+
+/* ШАПКА */
+
+header {
+  height: 75px;
+  padding: 0 7%;
+  background: rgba(25,17,14,.93);
+  border-bottom: 1px solid #81553d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: #e8c49b;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  color: #f1dfc2;
+  text-decoration: none;
+  font-size: 13px;
+  transition: .2s;
+}
+
+nav a:hover {
+  color: #e8785d;
+}
+
+/* ГЛАВНЫЙ ЭКРАН */
+
+.hero {
+  min-height: 650px;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #e5b88e;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: clamp(42px, 8vw, 85px);
+  font-weight: 800;
+  text-transform: uppercase;
+  text-shadow: 0 5px 25px #000;
+}
+
+h1 span {
+  color: #df6650;
+}
+
+.subtitle {
+  margin-top: 20px;
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 18px 35px;
+  background: var(--red);
+  border: 1px solid #e6a27c;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: .25s;
+}
+
+.button:hover {
+  background: #c64a37;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px #0008;
+}
+
+/* ОБЩИЕ СЕКЦИИ */
+
+section {
+  scroll-margin-top: 25px;
+}
+
+.paper {
+  width: min(850px, 90%);
+  margin: 0 auto;
+  padding: 55px 35px;
+  text-align: center;
+  color: #39271e;
+  background: linear-gradient(135deg, #f5e7ce, #dfc39a);
+  border: 3px double #8c6040;
+  box-shadow: 0 15px 50px #0008;
+}
+
+h2 {
+  font-size: clamp(27px, 5vw, 40px);
+  margin-bottom: 20px;
+}
+
+.paper p {
+  line-height: 1.9;
+  font-size: 15px;
+}
+
+.red-text {
+  color: var(--red);
+  font-weight: 800;
+  margin-top: 20px;
+}
+
+/* КАНДИДАТЫ */
+
+.candidates {
+  padding: 110px 7%;
+  text-align: center;
+}
+
+.candidates h2 {
+  color: var(--cream);
+}
+
+.description {
+  margin-bottom: 40px;
+  color: #e4cdb3;
+}
+
+.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.candidate {
+  padding: 30px 20px;
+  color: #38251d;
+  background: #f0ddbd;
+  border: 2px solid #a87b50;
+  box-shadow: 0 10px 30px #0007;
+  transition: .25s;
+}
+
+.candidate:hover {
+  transform: translateY(-7px);
+}
+
+.candidate-icon {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #a83228;
+  border-radius: 50%;
+  color: #a83228;
+  font-size: 30px;
+}
+
+.candidate h3 {
+  margin-bottom: 12px;
+  font-size: 19px;
+}
+
+.candidate p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.number {
+  color: #a83228;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* ПРАВИЛА */
+
+.rules {
+  margin-bottom: 100px;
+  text-align: left;
+}
+
+.rules h2 {
+  text-align: center;
+}
+
+.rules ol {
+  padding-left: 25px;
+  line-height: 2.2;
+}
+
+.rules li {
+  padding-left: 5px;
+}
+
+/* ГОЛОСОВАНИЕ */
+
+.vote {
+  padding: 80px 20px;
+  text-align: center;
+  background: rgba(35,20,16,.85);
+  border-top: 2px solid #a83228;
+  border-bottom: 2px solid #a83228;
+}
+
+.vote h2 {
+  color: #f1dfc2;
+}
+
+/* ПОДВАЛ */
+
+footer {
+  padding: 45px 20px;
+  text-align: center;
+  background: #17100e;
+  color: #cbb69e;
+}
+
+footer p {
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+footer small {
+  color: #897564;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
+@media(max-width: 700px) {
+  header {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  nav {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: 550px;
+  }
+
+  .candidate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .paper {
+    padding: 35px 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🍃 КОНОХА</div>
+
+  <nav>
+    <a href="#about">О выборах</a>
+    <a href="#candidates">Кандидаты</a>
+    <a href="#rules">Правила</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="eyebrow">
+      ДЕРЕВНЯ СКРЫТОГО ЛИСТА
+    </div>
+
+    <h1>
+      ВЫБОРЫ<br>
+      <span>ХОКАГЕ</span>
+    </h1>
+
+    <p class="subtitle">
+      Будущее Конохи в руках её жителей
+    </p>
+
+    <a href="#vote" class="button">
+      Проголосовать →
+    </a>
+  </section>
+
+  <section class="paper" id="about">
+    <h2>Коноха выбирает!</h2>
+
+    <p>
+      Жители Деревни Скрытого Листа!
+      Настало время определить будущего лидера
+      нашей великой деревни.
+    </p>
+
+    <p>
+      Изучите кандидатов, ознакомьтесь с их
+      программами и сделайте свой выбор.
+    </p>
+
+    <p class="red-text">
+      Каждый голос имеет значение!
+    </p>
+  </section>
+
+  <section class="candidates" id="candidates">
+    <h2>Кандидаты на пост Хокаге</h2>
+
+    <p class="description">
+      Познакомьтесь с претендентами на высшую должность деревни.
+    </p>
+
+    <div class="candidate-grid">
+
+      <div class="candidate">
+        <div class="number">КАНДИДАТ № 01</div>
+        <div class="candidate-icon">火</div>
+        <h3>Кандидат №1</h3>
+        <p>Здесь будет описание кандидата и его предвыборная программа.</p>
+      </div>
+
+      <div class="candidate">
+        <div class="number">КАНДИДАТ № 02</div>
+        <div class="candidate-icon">水</div>
+        <h3>Кандидат №2</h3>
+        <p>Здесь будет описание кандидата и его предвыборная программа.</p>
+      </div>
+
+      <div class="candidate">
+        <div class="number">КАНДИДАТ № 03</div>
+        <div class="candidate-icon">風</div>
+        <h3>Кандидат №3</h3>
+        <p>Здесь будет описание кандидата и его предвыборная программа.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="paper rules" id="rules">
+    <h2>Правила выборов</h2>
+
+    <ol>
+      <li>Голосовать могут жители сервера.</li>
+      <li>Каждый участник выбирает одного кандидата.</li>
+      <li>Запрещено использовать дополнительные аккаунты для голосования.</li>
+      <li>Запрещено принуждать других игроков к выбору.</li>
+      <li>Результаты будут опубликованы после окончания выборов.</li>
+    </ol>
+  </section>
+
+  <section class="vote" id="vote">
+    <h2>Будущее Конохи зависит от тебя!</h2>
+
+    <p>
+      Сделай свой выбор и определи судьбу деревни.
+    </p>
+
+    <a
+      class="button"
+      href="https://docs.google.com/forms/"
+      target="_blank"
+      rel="noopener"
+    >
+      Открыть голосование →
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  <p>«Коноха — наш дом. И его будущее в наших руках».</p>
+  <small>
+    Неофициальный игровой проект по мотивам Naruto
+  </small>
+</footer>
+
+</body>
+</html>
