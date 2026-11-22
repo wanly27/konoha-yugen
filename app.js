@@ -5,9 +5,11 @@
   const button = document.getElementById("submitBtn");
   const customWrap = document.getElementById("customWrap");
   const customInput = document.getElementById("customCandidate");
-  const featuredName = document.getElementById("featuredName");
 
-  featuredName.textContent = cfg.FEATURED_CANDIDATE || "Предложенный кандидат";
+  document.getElementById("featuredName").textContent =
+    cfg.FEATURED_CANDIDATE || "Юки Учиха";
+  document.getElementById("secondName").textContent =
+    cfg.SECOND_CANDIDATE || "Рю Сенджу";
 
   function selectedChoice() {
     return form.querySelector('input[name="choice"]:checked')?.value || "featured";
@@ -38,9 +40,12 @@
     const nickname = document.getElementById("nickname").value.trim();
     const steamId = document.getElementById("steamId").value.trim().toUpperCase();
     const choice = selectedChoice();
-    const candidate = choice === "featured"
-      ? String(cfg.FEATURED_CANDIDATE || "").trim()
-      : customInput.value.trim();
+    const candidates = {
+      featured: String(cfg.FEATURED_CANDIDATE || "Юки Учиха").trim(),
+      second: String(cfg.SECOND_CANDIDATE || "Рю Сенджу").trim(),
+      custom: customInput.value.trim()
+    };
+    const candidate = candidates[choice];
 
     if (nickname.length < 3 || nickname.length > 24) {
       show("Ник должен содержать от 3 до 24 символов.", "error");
@@ -82,7 +87,7 @@
             : "С этого игрового ника или SteamID голос уже был отправлен.";
           show(msg, "error");
         } else if (error.code === "23514") {
-          show("Неверный формат SteamID или ника.", "error");
+          show("Проверь формат ника, SteamID и выбранного кандидата.", "error");
         } else if (error.code === "42501") {
           show("Голосование закрыто или запрос не разрешён.", "error");
         } else {
@@ -90,7 +95,7 @@
           show("Не удалось сохранить голос. Проверь настройки Supabase и попробуй позже.", "error");
         }
       } else {
-        show("Твой голос запечатан! Спасибо за участие в судьбе Конохи.", "success");
+        show("Твой голос запечатан и сохранён! Спасибо за участие в судьбе Конохи.", "success");
         form.reset();
         updateChoice();
       }
