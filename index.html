@@ -22,7 +22,7 @@
     <section class="paper">
       <div class="paper-inner">
         <h2>Свиток голосования</h2>
-        <p class="note">Введи свой игровой ник и выбери одного кандидата. Если считаешь, что Хокаге должен стать кто-то другой, впиши его имя в поле собственного предложения.</p>
+        <p class="note">Введи свой игровой ник и SteamID, затем выбери одного из двух кандидатов или предложи своего.</p>
 
         <form id="voteForm">
           <label for="nickname">Твой игровой ник</label>
@@ -38,7 +38,12 @@
             <label class="choice">
               <input type="radio" name="choice" value="featured" checked>
               <span class="choice-mark"></span>
-              <span><strong id="featuredName">Юки Учиха (Кандидат от совета)</strong><small>Предложенный кандидат</small></span>
+              <span><strong id="featuredName">Юки Учиха</strong><small>Кандидат 1</small></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="choice" value="second">
+              <span class="choice-mark"></span>
+              <span><strong id="secondName">Рю Сенджу</strong><small>Кандидат 2</small></span>
             </label>
             <label class="choice">
               <input type="radio" name="choice" value="custom">
@@ -56,7 +61,7 @@
           <button id="submitBtn" type="submit">Поставить печать и проголосовать</button>
           <p id="status" class="status" role="status" aria-live="polite"></p>
         </form>
-        <p class="smallprint">Один голос на один игровой ник. После отправки изменить голос нельзя.</p>
+        <p class="smallprint">Один голос на один игровой ник и SteamID. После отправки изменить голос нельзя.</p>
       </div>
     </section>
     <footer>Коноха помнит выбор каждого.</footer>
